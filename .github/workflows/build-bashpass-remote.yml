@@ -1,0 +1,45 @@
+name: DEB Build BashPass-Remote
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: build BashPass-Remote deb package
+      id: deb
+      run: |
+        cd bashpass-remote/ || exit 1
+        git clone https://github.com/AntonVanAssche/BashPass-Remote.git
+        bash build.sh
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: deb
+        path: bashpass-remote/bashpass-remote_1.0_all.deb
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: deb
+
+      - uses: AntonVanAssche/yank-packagecloud@v1.0
+        continue-on-error: true
+        with:
+          PACKAGE-NAME: bashpass-remote_1.0_all.deb
+          PACKAGECLOUD-USERNAME: AntonVanAssche
+          PACKAGECLOUD-REPO: bashpass
+          PACKAGECLOUD-DISTRIB: ubuntu/lunar/
+          PACKAGECLOUD-TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+
+      - uses: danielmundi/upload-packagecloud@v1
+        with:
+          PACKAGE-NAME: bashpass-remote_1.0_all.deb
+          PACKAGECLOUD-USERNAME: AntonVanAssche
+          PACKAGECLOUD-REPO: bashpass
+          PACKAGECLOUD-DISTRIB: ubuntu/lunar/
+          PACKAGECLOUD-TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
