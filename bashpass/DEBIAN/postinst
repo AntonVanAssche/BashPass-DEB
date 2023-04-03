@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -o errexit # Abort on nonzero exit code.
+set -o nounset # Abort on unbound variable.
+set -o pipefail # Don't hide errors within pipes.
+
+for user in /home/*; do
+    mkdir -p "/home/${user}/.config/bashpass"
+    install -m 0644 "/etc/skel/.config/bashpass/bashpass.conf" "/home/${user}/.config/bashpass/bashpass.conf"
+done
