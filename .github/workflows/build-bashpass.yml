@@ -44,3 +44,20 @@ jobs:
           PACKAGECLOUD-REPO: bashpass
           PACKAGECLOUD-DISTRIB: ubuntu/lunar/
           PACKAGECLOUD-TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+
+      - uses: AntonVanAssche/yank-packagecloud@v1.0
+        continue-on-error: true
+        with:
+          PACKAGE-NAME: bashpass_3.0_all.deb
+          PACKAGECLOUD-USERNAME: AntonVanAssche
+          PACKAGECLOUD-REPO: bashpass
+          PACKAGECLOUD-DISTRIB: ubuntu/jammy/
+          PACKAGECLOUD-TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+
+      - uses: danielmundi/upload-packagecloud@v1
+        with:
+          PACKAGE-NAME: bashpass_3.0_all.deb
+          PACKAGECLOUD-USERNAME: AntonVanAssche
+          PACKAGECLOUD-REPO: bashpass
+          PACKAGECLOUD-DISTRIB: ubuntu/jammy/
+          PACKAGECLOUD-TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
