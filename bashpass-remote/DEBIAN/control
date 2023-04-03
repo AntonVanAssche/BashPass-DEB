@@ -1,0 +1,12 @@
+Maintainer: Anton Van Assche
+Summary: BashPass-Remote allows you to securely access your passwords on a remote server, such as a NAS. This project is written in (pure) Bash and acts as a wrapper around SSH and BashPass. With BashPass-Remote, you can use BashPass as if it were installed locally, while your passwords are stored remotely.
+Name: bashpass-remote
+Version: 1.0
+Description: A wrapper for BashPass, which allows you to manage your BashPass passwords stored on a remote server.
+License: MIT
+Architecture: all
+Provides: bashpass-remote
+Priority: optional
+Depends: bash, openssh
+Section: utils
+Package: bashpass-remote
