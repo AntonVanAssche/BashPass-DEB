@@ -18,7 +18,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: deb
-        path: bashpass/bashpass_3.0_all.deb
+        path: bashpass/bashpass_3.1_all.deb
 
   deploy:
     needs: build
@@ -31,7 +31,7 @@ jobs:
       - uses: AntonVanAssche/yank-packagecloud@v1.0
         continue-on-error: true
         with:
-          PACKAGE-NAME: bashpass_3.0_all.deb
+          PACKAGE-NAME: bashpass_3.1_all.deb
           PACKAGECLOUD-USERNAME: AntonVanAssche
           PACKAGECLOUD-REPO: bashpass
           PACKAGECLOUD-DISTRIB: ubuntu/lunar/
@@ -39,7 +39,7 @@ jobs:
 
       - uses: danielmundi/upload-packagecloud@v1
         with:
-          PACKAGE-NAME: bashpass_3.0_all.deb
+          PACKAGE-NAME: bashpass_3.1_all.deb
           PACKAGECLOUD-USERNAME: AntonVanAssche
           PACKAGECLOUD-REPO: bashpass
           PACKAGECLOUD-DISTRIB: ubuntu/lunar/
@@ -48,7 +48,7 @@ jobs:
       - uses: AntonVanAssche/yank-packagecloud@v1.0
         continue-on-error: true
         with:
-          PACKAGE-NAME: bashpass_3.0_all.deb
+          PACKAGE-NAME: bashpass_3.1_all.deb
           PACKAGECLOUD-USERNAME: AntonVanAssche
           PACKAGECLOUD-REPO: bashpass
           PACKAGECLOUD-DISTRIB: ubuntu/jammy/
@@ -56,7 +56,7 @@ jobs:
 
       - uses: danielmundi/upload-packagecloud@v1
         with:
-          PACKAGE-NAME: bashpass_3.0_all.deb
+          PACKAGE-NAME: bashpass_3.1_all.deb
           PACKAGECLOUD-USERNAME: AntonVanAssche
           PACKAGECLOUD-REPO: bashpass
           PACKAGECLOUD-DISTRIB: ubuntu/jammy/
