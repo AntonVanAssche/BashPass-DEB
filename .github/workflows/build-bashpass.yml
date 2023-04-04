@@ -1,5 +1,11 @@
 name: DEB Build BashPass
-on: push
+on:
+  push:
+    paths:
+      - "bashpass/**"
+  pull_request:
+    paths:
+      - "bashpass/**"
 
 jobs:
   build:

@@ -1,5 +1,11 @@
 name: DEB Build BashPass-Remote
-on: push
+on:
+  push:
+    paths:
+      - "bashpass-remote/**"
+  pull_request:
+    paths:
+      - "bashpass-remote/**"
 
 jobs:
   build:
